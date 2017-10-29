@@ -1,0 +1,26 @@
+body {
+  background-color: #253651;
+  color: white;
+  text-align: center;
+}
+
+.nav-item{
+  background-color: black;
+}
+
+.nav {
+  background-color: black;
+}
+
+.questionList{
+  text-decoration: none;
+  list-style:none;
+}
+
+.done{
+  visibility: hidden;
+}
+
+.allDone{
+  visibility: hidden;
+}

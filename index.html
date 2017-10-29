@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Set the mood</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tween.js@16.3.4"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="app.css" type="text/css">
+  </head>
+  <body>
+    <div id="app">
+      <ul class="nav"><li class="nav-item"><strong>{{totalDone}} questions Completed. Answer all questions for suggested music</strong></li></ul>
+      <label for="usr">Name:</label>
+      <input type="text" id="usr" v-model="username"></input>
+      <ul class="questionList">
+        <li v-for="question in questions">
+          <div :class="{done: question.completed}">
+          {{question.text}}
+          <div :class="{done: question.completed}">
+            <button v-on:click="updateScore(question.answers[0].value, question.count)">{{question.answers[0].text}}</button>
+            <button v-on:click="updateScore(question.answers[1].value, question.count)">{{question.answers[1].text}}</button>
+            <button v-on:click="updateScore(question.answers[2].value, question.count)">{{question.answers[2].text}}</button>
+          </div>
+          </div>
+        </li>
+      </ul>
+      <div :class="{allDone: inProgress}">
+        <result :name="username"></result>
+        <iframe width="560" height="315" :src="chosenLink" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <script src="app.js"></script>
+
+  </body>
+</html>
